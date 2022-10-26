@@ -5,6 +5,11 @@
 :: BUT AS MODS COMING MODS GO, YOU PROBABLY NEED TO SETUP IT AGAIN SOON MOD LIST CHANGE
 
 :: ALL MODS LIST ARE NEXT
+:: KEEP IT THE SAME WAY LIKE
+:: set Mods[0]=1823412793
+:: WHERE THE 0 BETWEEN THE [] NEED TO BE THE FIRST ONE.
+:: AND ALL THE MODs IDs AFTER THE EQUAL (=) CHARACTER
+
 set Mods[0]=1823412793
 set Mods[1]=880454836
 set Mods[2]=2871328013
@@ -40,21 +45,31 @@ set Mods[31]=2723987721
 set Mods[32]=877108545
 set Mods[33]=1369743238
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 :: DO NOT CROSS THIS LINE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -97,25 +112,114 @@ set Mods[33]=1369743238
 
 
 
-:: OKAY IF YOU ARE EXPERIENCE EDIT THE NEXT CODE, FEEL FREE TO DO IT
-:: HOPE YOU LIKE THE LITTLE MINUTES I TAKE TO DO THIS SCRIPT
+
+
+
+
+
+
+
+
+
+
+
+:: OKAY IF YOU ARE EXPERIENCE ON EDITING THE NEXT CODE, FEEL FREE TO DO IT
+:: HOPE YOU LIKE THE MINUTES I TAKE TO DO THIS SCRIPT
 
 
 :: BE AWARE YMIR IS WATCHING  HAHHAHA
 
+:MENU
+cls
+echo.
+echo.
+echo ==================================================
+echo      MADE WITH LOVE TO THE OUTCAST COMMUNITY
+echo ==================================================
+echo.
+echo.
+echo 1 - Tell me how do i Edit the Mod List this Script uses?
+echo 2 - Download Updated Mods From List
+echo 3 - Copy Mods to my Game Workshop Folder
+echo 4 - Open Downloaded Mods Folder
+echo 5 - Open My Steam Workshop Folder From C Drive
+echo 5 - EXIT
+echo.
+echo.
+
+SET /P M=TYPE 1, 2 3 etc. to select what you want to do, then press ENTER:
+IF %M%==1 GOTO HELP
+IF %M%==2 GOTO DOWNLOAD
+IF %M%==3 GOTO COPYING
+IF %M%==4 GOTO OPENFOLDER
+IF %M%==5 GOTO OPENFOLDERC
+IF %M%==6 GOTO EOF
+
+GOTO MENU
+
+:HELP
+cls
+echo.
+echo.
+echo ==================================================
+echo      MADE WITH LOVE TO THE OUTCAST COMMUNITY
+echo ==================================================
+echo.
+echo.
+echo FIRST YOU NEED TO GO TO THIS FILE
+echo THAT YOU JUST DOUBLE CLICK
+echo AND RIGHT CLICK AND OPEN WITH NOTEPAD
+echo OR ANYOTHER TEXT EDITOR YOU MAY USE
+echo.
+echo THEN READ THE TOP AREA AND EDIT THE MOD LIST THERE
+echo.
+echo.
+timeout /T 300
+GOTO MENU
 
 
-echo BEFORE CONTINUE,
-echo I ALREADY SETUP THE MOD IDs FOR OUTCAST COMMUNITY
-echo BUT IF YOU NEED TO CHANGE IT,
-echo EDIT THE BAT SCRIPT WITH YOUR NOTEPAD
-echo AT THE TOP OF THE FILE YOU CAN SEE THE CONFIGURATION AREA
-echo. 
+:OPENFOLDER
+cls
 echo.
-echo BUT IF YOU DONT WANT TO CHANGE IT, PLEASE PRESS ANY KEY TO CONTINUE
-echo. 
 echo.
-pause
+echo ==================================================
+echo      MADE WITH LOVE TO THE OUTCAST COMMUNITY
+echo ==================================================
+echo.
+echo.
+echo OPENING THE FOLDER...
+echo.
+echo.
+start "" ".\steamapps\workshop\content\440900\"
+timeout /T 10
+GOTO MENU
+
+:OPENFOLDERC
+cls
+echo.
+echo.
+echo ==================================================
+echo      MADE WITH LOVE TO THE OUTCAST COMMUNITY
+echo ==================================================
+echo.
+echo.
+echo OPENING THE FOLDER...
+echo.
+echo.
+start "" "C:\Program Files (x86)\Steam\steamapps\workshop\content\440900\"
+timeout /T 10
+GOTO MENU
+
+
+:DOWNLOAD
+cls
+echo.
+echo.
+echo ==================================================
+echo      MADE WITH LOVE TO THE OUTCAST COMMUNITY
+echo ==================================================
+echo.
+echo.
 echo START DOWNLOADING steamcmd.zip A SOFTWARE NEEDED TO DOWNLOAD OR UPDATE MODS
 echo IT IS AN OFFICIAL APP FROM STEAM.
 echo IF YOU NEED MORE INFO CONTACT ME.
@@ -123,13 +227,21 @@ timeout /T 120
 powershell -Command "Invoke-WebRequest https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip -OutFile steamcmd.zip"
 echo NOW WE GOING TO UNZIP FILE
 timeout /T 10
-echo UNZIPING THE FILE...DONE!
+echo.
+@ECHO ON
 tar -xf steamcmd.zip
-echo NOW WE WILL EXECUTE THE DOWNLOAD OF THE OUTCAST MOD LIST
-echo THAT YOU PREVIOUS SET ON THIS FILE, WITH ONES THAT ARE REALLY UPDATED
+@ECHO OFF
+echo UNZIPING THE FILE...DONE!
+echo.
+echo.
+echo NOW WE WILL EXECUTE THE DOWNLOAD OF THE MODs FROM THE LIST
+echo THAT YOU PREVIOUS SET ON THIS FILE
+echo.
+echo.
 timeout /T 60
 echo STARTING steamcmd.exe PROGRAM
-
+echo.
+echo.
 set "x=0"
 
 :SymLoop
@@ -139,10 +251,51 @@ if defined Mods[%x%] (
     GOTO :SymLoop
 )
 echo.
+echo.
 steamcmd +login anonymous%list% +quit
+echo.
+echo.
+timeout /T 10
+GOTO MENU
 
-echo REMEMBER YOUR MODS ARE ON SUBFOLDERS OF WHERE YOU RUN THIS SCRIPT
-echo CHECK THE SUBFOLDERS AT
-echo steamapps\workshop\content\440900
-timeout /T 300
-pause 
+:COPYING
+cls
+echo.
+echo.
+echo ==================================================
+echo      MADE WITH LOVE TO THE OUTCAST COMMUNITY
+echo ==================================================
+echo.
+echo 1 - Move Mods to my Steam Workshop on C: Disk Drive
+echo 2 - Back to the Main Menu
+echo 3 - EXIT
+echo.
+echo.
+SET /P M=Type 1, 2, 3, or 4 then press ENTER:
+IF %M%==1 GOTO COPYALL
+IF %M%==2 GOTO MENU
+IF %M%==3 GOTO EOF
+
+:COPYALL
+cls
+echo.
+echo.
+echo ==================================================
+echo      MADE WITH LOVE TO THE OUTCAST COMMUNITY
+echo ==================================================
+echo.
+echo.
+echo START MOVING...
+@ECHO ON
+move /y steamapps\workshop\content\440900 "C:\Program Files (x86)\Steam\steamapps\workshop\content\440900"
+@ECHO OFF
+echo.
+echo.
+echo DONE. CHECK YOUR GAME, AND HAVE FUN PLAYING!
+echo.
+echo.
+timeout /T 10
+GOTO COPYING
+
+
+exit
